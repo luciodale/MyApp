@@ -11,3 +11,7 @@ pom.xml
 .nrepl-port
 .cpcache/
 .rebel_readline_history
+.cljs_nashorn_repl/
+nashorn_code_cache/
+**/.DS_Store
+**/#*#
