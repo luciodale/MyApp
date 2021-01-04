@@ -1,30 +1,20 @@
 (ns ^:figwheel-hooks fresh-figwheel-main.core
   (:require
    [goog.dom :as gdom]
-   [reagent.core :as reagent :refer [atom]]))
-
-(println "This text is printed from src/fresh_figwheel_main/core.cljs. Go ahead and edit it and see reloading in action.")
+   [reagent.core :as r]
+   [fresh-figwheel-main.views :as views]))
 
 (defn multiply [a b] (* a b))
 
-
-;; define your app data so that it doesn't get over-written on reload
-(defonce app-state (atom {:text "Hello world!"}))
-
-(defn get-app-element []
-  (gdom/getElement "app"))
-
-(defn hello-world []
-  [:div
-   [:h1 (:text @app-state)]
-   [:h3 "Edit this in src/fresh_figwheel_main/core.cljs and watch it change!"]])
+(defn get-app-element [] 
+  (gdom/getElement "app")) 
 
 (defn mount [el]
-  (reagent/render-component [hello-world] el))
+  (r/render-component [views/hello-world] el))
 
 (defn mount-app-element []
   (when-let [el (get-app-element)]
-    (mount el)))
+    (mount el))) 
 
 ;; conditionally start your application based on the presence of an "app" element
 ;; this is particularly helpful for testing this ns without launching the app
@@ -36,4 +26,4 @@
   ;; optionally touch your app-state to force rerendering depending on
   ;; your application
   ;; (swap! app-state update-in [:__figwheel_counter] inc)
-)
+  )
